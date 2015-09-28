@@ -69,10 +69,6 @@ type HtmlRendererParameters struct {
 	HeaderIDPrefix string
 	// If set, add this text to the back of each Header ID, to ensure uniqueness.
 	HeaderIDSuffix string
-	// Body tag style class
-	BodyTagClass string
-	// TOC ul element style
-	TocUlStyle string
 }
 
 // Html is a type that implements the Renderer interface for HTML output.
@@ -707,11 +703,7 @@ func (options *Html) DocumentHeader(out *bytes.Buffer) {
 		out.WriteString(">\n")
 	}
 	out.WriteString("</head>\n")
-	if options.parameters.BodyTagClass != "" {
-		out.WriteString(fmt.Sprintf("<body class=\"%s\">\n", options.parameters.BodyTagClass))
-	} else {
-		out.WriteString("<body>\n")
-	}
+	out.WriteString("<body>\n")
 
 	options.tocMarker = out.Len()
 }
@@ -772,11 +764,7 @@ func (options *Html) TocHeaderWithAnchor(text []byte, level int, anchor string) 
 		if options.toc.Len() > 0 {
 			options.toc.WriteByte('\n')
 		}
-		if options.parameters.TocUlStyle != "" {
-			options.toc.WriteString(fmt.Sprintf("<ul style=\"%s\">\n", options.parameters.TocUlStyle))
-		} else {
-			options.toc.WriteString("<ul>\n")
-		}
+		options.toc.WriteString("<ul>\n")
 		options.currentLevel++
 	}
 
