@@ -776,14 +776,14 @@ func (options *Html) TocHeaderWithAnchor(text []byte, level int, anchor string) 
 		options.currentLevel--
 	}
 
-	options.toc.WriteString("<li><a href=\"#")
+	options.toc.WriteString("<li><a href=\"\" ng-click=\"gotoanchor('")
 	if anchor != "" {
 		options.toc.WriteString(anchor)
 	} else {
 		options.toc.WriteString("toc_")
 		options.toc.WriteString(strconv.Itoa(options.headerCount))
 	}
-	options.toc.WriteString("\">")
+	options.toc.WriteString("')\">")
 	options.headerCount++
 
 	options.toc.Write(text)
