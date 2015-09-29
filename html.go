@@ -311,11 +311,11 @@ func (options *Html) TableHeaderCell(out *bytes.Buffer, text []byte, align int) 
 	doubleSpace(out)
 	switch align {
 	case TABLE_ALIGNMENT_LEFT:
-		out.WriteString("<th align=\"left\">")
+		out.WriteString("<th style=\"text-align:left\">")
 	case TABLE_ALIGNMENT_RIGHT:
-		out.WriteString("<th align=\"right\">")
+		out.WriteString("<th style=\"text-align:right\">")
 	case TABLE_ALIGNMENT_CENTER:
-		out.WriteString("<th align=\"center\">")
+		out.WriteString("<th style=\"text-align:center\">")
 	default:
 		out.WriteString("<th>")
 	}
@@ -328,11 +328,11 @@ func (options *Html) TableCell(out *bytes.Buffer, text []byte, align int) {
 	doubleSpace(out)
 	switch align {
 	case TABLE_ALIGNMENT_LEFT:
-		out.WriteString("<td align=\"left\">")
+		out.WriteString("<td style=\"text-align:left\">")
 	case TABLE_ALIGNMENT_RIGHT:
-		out.WriteString("<td align=\"right\">")
+		out.WriteString("<td style=\"text-align:right\">")
 	case TABLE_ALIGNMENT_CENTER:
-		out.WriteString("<td align=\"center\">")
+		out.WriteString("<td style=\"text-align:center\">")
 	default:
 		out.WriteString("<td>")
 	}
